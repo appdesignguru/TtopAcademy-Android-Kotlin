@@ -7,7 +7,7 @@ import com.ttopacademy.localdatasources.entities.Topic
 /** UI state for topic list screen. */
 data class TopicUiState(
     val isFetchingTopics: Boolean,
-    val topics: List<Topic> = listOf(),
+    val topics: MutableList<Topic> = mutableListOf(),
     val selectedCategory: Category,
     val selectedSubject: Subject,
 )

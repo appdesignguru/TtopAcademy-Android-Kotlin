@@ -5,5 +5,5 @@ import com.ttopacademy.localdatasources.entities.Category
 /** UI state for category list screen. */
 data class CategoryUiState(
     val isFetchingCategories: Boolean,
-    val categories: List<Category> = listOf()
+    val categories: MutableList<Category> = mutableListOf()
 )

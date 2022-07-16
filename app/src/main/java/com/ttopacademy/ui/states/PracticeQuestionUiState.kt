@@ -9,7 +9,7 @@ import com.ttopacademy.localdatasources.entities.practicequestions.PracticeQuest
 /** UI state for practice question list screen. */
 data class PracticeQuestionUiState(
     val isFetchingPracticeQuestions: Boolean,
-    val practiceQuestions: List<PracticeQuestion> = listOf(),
+    val practiceQuestions: MutableList<PracticeQuestion> = mutableListOf(),
     val selectedCategory: Category,
     val selectedSubject: Subject,
     val selectedTopic: Topic,
