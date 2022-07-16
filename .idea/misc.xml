@@ -4,6 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/category_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/fragment_category_list.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/fragment_practice_question.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/fragment_subject_list.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/fragment_topic_list.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/fragment_video.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/fragment_video_list.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/subject_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/topic_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/HP/kotlinprojects/app/src/main/res/layout/video_list_item.xml" value="0.1" />
       </map>
     </option>
   </component>
