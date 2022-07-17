@@ -7,9 +7,19 @@ import com.ttopacademy.localdatasources.entities.Video
 
 /** UI state for video list screen. */
 data class VideoUiState(
+
+    /** Checks whether videos are currently being fetched. */
     val isFetchingVideos: Boolean,
+
+    /** Returns all videos. */
     val videos: MutableList<Video> = mutableListOf(),
+
+    /** Returns selected category. */
     val selectedCategory: Category,
+
+    /** Returns selected subject. */
     val selectedSubject: Subject,
-    val selectedTopic: Topic,
+
+    /** Returns selected topic. */
+    val selectedTopic: Topic
 )

@@ -7,8 +7,16 @@ import com.ttopacademy.localdatasources.entities.Video
 
 /** UI state for video item screen. */
 data class VideoItemUiState(
+
+    /** Returns selected category. */
     val selectedCategory: Category,
+
+    /** Returns selected subject. */
     val selectedSubject: Subject,
+
+    /** Returns selected topic. */
     val selectedTopic: Topic,
+
+    /** Returns selected video. */
     val selectedVideo: Video
 )
