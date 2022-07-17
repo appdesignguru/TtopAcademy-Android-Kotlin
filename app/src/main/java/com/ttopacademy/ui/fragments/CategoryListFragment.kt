@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ttopacademy.R
 import com.ttopacademy.localdatasources.entities.Category
 import com.ttopacademy.ui.adapters.CategoryAdapter
-import com.ttopacademy.ui.viewmodels.FakeMainViewModel
+import com.ttopacademy.ui.viewmodels.MainViewModel
+import com.ttopacademy.ui.viewmodels.MainViewModelImpl
 import dagger.hilt.android.AndroidEntryPoint
 
 /** Fragment for showing categories. */
 @AndroidEntryPoint
 class CategoryListFragment : Fragment() {
 
-    private lateinit var mainViewModel: FakeMainViewModel
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var progressBar: ProgressBar
@@ -36,7 +37,7 @@ class CategoryListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel = ViewModelProvider(this).get(FakeMainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this)[MainViewModelImpl::class.java]
         mainViewModel.getCategoryUiState().observe(viewLifecycleOwner) { result ->
             if (result.isFetchingCategories) {
                 progressBar.visibility = View.VISIBLE

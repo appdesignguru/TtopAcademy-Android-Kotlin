@@ -1,6 +1,7 @@
 package com.ttopacademy.localdatasources.entities
 
 import androidx.room.PrimaryKey
+import java.util.*
 
 data class CategorySubject(
 
@@ -14,5 +15,5 @@ data class CategorySubject(
     val subjectID: Int,
 
     /** Returns subjectID. */
-    val dateSavedToLocalDatabase: Int
+    val dateSavedToLocalDatabase: Date
 )

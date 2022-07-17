@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ttopacademy.R
 import com.ttopacademy.localdatasources.entities.Subject
 import com.ttopacademy.ui.adapters.SubjectAdapter
-import com.ttopacademy.ui.viewmodels.FakeMainViewModel
+import com.ttopacademy.ui.viewmodels.MainViewModel
+import com.ttopacademy.ui.viewmodels.MainViewModelImpl
 import dagger.hilt.android.AndroidEntryPoint
 
 /** Fragment for showing subjects. */
 @AndroidEntryPoint
 class SubjectListFragment : Fragment() {
 
-    private lateinit var mainViewModel: FakeMainViewModel
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var subjectAdapter: SubjectAdapter
     private lateinit var progressBar: ProgressBar
@@ -35,7 +36,7 @@ class SubjectListFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel = ViewModelProvider(this).get(FakeMainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this)[MainViewModelImpl::class.java]
         mainViewModel.getSubjectUiState().observe(viewLifecycleOwner) { result ->
             if (result.isFetchingSubjects) {
                 progressBar.visibility = View.VISIBLE

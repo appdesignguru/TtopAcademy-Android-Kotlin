@@ -10,14 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ttopacademy.R
 import com.ttopacademy.localdatasources.entities.Video
-import com.ttopacademy.ui.viewmodels.FakeMainViewModel
+import com.ttopacademy.ui.viewmodels.MainViewModel
+import com.ttopacademy.ui.viewmodels.MainViewModelImpl
 import dagger.hilt.android.AndroidEntryPoint
 
 /** Fragment for watching video. */
 @AndroidEntryPoint
 class VideoFragment : Fragment() {
 
-    private lateinit var mainViewModel: FakeMainViewModel
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var youtubeID: TextView
     private lateinit var videoTitle: TextView
     private lateinit var videoSize: TextView
@@ -36,7 +37,7 @@ class VideoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel = ViewModelProvider(this).get(FakeMainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this)[MainViewModelImpl::class.java]
         mainViewModel.getVideoItemUiState().observe(viewLifecycleOwner) { result ->
             video = result.selectedVideo
             updateUI()

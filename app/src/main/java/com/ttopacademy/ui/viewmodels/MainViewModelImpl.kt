@@ -2,20 +2,33 @@ package com.ttopacademy.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ttopacademy.localdatasources.entities.Category
 import com.ttopacademy.localdatasources.entities.Subject
 import com.ttopacademy.localdatasources.entities.Topic
 import com.ttopacademy.localdatasources.entities.Video
-import com.ttopacademy.localdatasources.entities.practicequestions.Option
 import com.ttopacademy.localdatasources.entities.practicequestions.PracticeQuestion
+import com.ttopacademy.managers.interfaces.SubjectManager
+import com.ttopacademy.managers.interfaces.TopicManager
+import com.ttopacademy.managers.interfaces.VideoManager
+import com.ttopacademy.repositories.interfaces.CategoryRepository
+import com.ttopacademy.repositories.interfaces.PracticeQuestionRepository
 import com.ttopacademy.ui.states.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
-/** Fake MainViewModel implementation class. Used for unit testing only. */
+/** MainViewModel implementation class. */
 @HiltViewModel
-class FakeMainViewModel @Inject constructor() : ViewModel(), MainViewModel {
+class MainViewModelImpl @Inject constructor(
+    private val categoryRepository: CategoryRepository,
+    private val subjectManager: SubjectManager,
+    private val topicManager: TopicManager,
+    private val videoManager: VideoManager,
+    private val practiceQuestionRepository: PracticeQuestionRepository
+) : ViewModel(), MainViewModel {
 
     private var selectedCategory: Category
     private var selectedSubject: Subject
@@ -26,13 +39,11 @@ class FakeMainViewModel @Inject constructor() : ViewModel(), MainViewModel {
         val categoryUiState: MutableLiveData<CategoryUiState> by lazy {
             MutableLiveData<CategoryUiState>()
         }
-
-        val testCategories: MutableList<Category> = mutableListOf()
-        testCategories.add(Category(1, 1, "JAMB", Date()))
-        testCategories.add(Category(2, 2, "SS3", Date()))
-
-        categoryUiState.value = CategoryUiState(false, testCategories)
-
+        categoryUiState.value = CategoryUiState(true, mutableListOf())
+        viewModelScope.launch(Dispatchers.IO) {
+            val categories: MutableList<Category> = categoryRepository.getAllCategories()
+            categoryUiState.postValue(CategoryUiState(false, categories))
+        }
         return categoryUiState
     }
 
@@ -40,12 +51,11 @@ class FakeMainViewModel @Inject constructor() : ViewModel(), MainViewModel {
         val subjectUiState: MutableLiveData<SubjectUiState> by lazy {
             MutableLiveData<SubjectUiState>()
         }
-        val testSubjects: MutableList<Subject> = mutableListOf()
-        testSubjects.add(Subject(1, 1, "Biology", Date()))
-        testSubjects.add(Subject(2, 2, "Physics", Date()))
-
-        subjectUiState.value = SubjectUiState(false, testSubjects, selectedCategory)
-
+        subjectUiState.value = SubjectUiState(true, mutableListOf(), selectedCategory)
+        viewModelScope.launch(Dispatchers.IO) {
+            val subjects: MutableList<Subject> = subjectManager.getSubjects(selectedCategory.categoryID)
+            subjectUiState.postValue(SubjectUiState(false, subjects, selectedCategory))
+        }
         return subjectUiState
     }
 
@@ -53,12 +63,12 @@ class FakeMainViewModel @Inject constructor() : ViewModel(), MainViewModel {
         val topicUiState: MutableLiveData<TopicUiState> by lazy {
             MutableLiveData<TopicUiState>()
         }
-        val testTopics: MutableList<Topic> = mutableListOf()
-        testTopics.add(Topic(1, 1, "Topic 1", Date()))
-        testTopics.add(Topic(2, 1, "Topic 2", Date()))
-
-        topicUiState.value = TopicUiState(false, testTopics, selectedCategory, selectedSubject)
-
+        topicUiState.value = TopicUiState(false, mutableListOf(), selectedCategory, selectedSubject)
+        viewModelScope.launch(Dispatchers.IO) {
+            val topics: MutableList<Topic>
+                = topicManager.getTopics(selectedCategory.categoryID, selectedSubject.subjectID)
+            topicUiState.postValue(TopicUiState(false, topics, selectedCategory, selectedSubject))
+        }
         return topicUiState
     }
 
@@ -66,30 +76,27 @@ class FakeMainViewModel @Inject constructor() : ViewModel(), MainViewModel {
         val videoUiState: MutableLiveData<VideoUiState> by lazy {
             MutableLiveData<VideoUiState>()
         }
-        val testVideos: MutableList<Video> = mutableListOf()
-        testVideos.add(
-                Video(1,  1, "Video Title 1", "youtubeID 1", "10",
-                "solution youtubeID 1", "10", Date())
-        )
-        testVideos.add(
-                Video(2,  1, "Video Title 2", "youtubeID 2", "10",
-            "solution youtubeID 2", "10", Date())
-        )
         videoUiState.value = VideoUiState(
-            false, testVideos, selectedCategory, selectedSubject, selectedTopic
+            false, mutableListOf(), selectedCategory, selectedSubject, selectedTopic
         )
-
-       return videoUiState
+        viewModelScope.launch(Dispatchers.IO) {
+            val videos: MutableList<Video> = videoManager.getVideos(
+                selectedCategory.categoryID, selectedSubject.subjectID, selectedTopic.topicID
+            )
+            videoUiState.postValue(
+                VideoUiState(false, videos, selectedCategory, selectedSubject, selectedTopic)
+            )
+        }
+        return videoUiState
     }
 
     override fun getVideoItemUiState(): MutableLiveData<VideoItemUiState> {
         val videoItemUiState: MutableLiveData<VideoItemUiState> by lazy {
             MutableLiveData<VideoItemUiState>()
         }
-        videoItemUiState.value = VideoItemUiState(
-            selectedCategory, selectedSubject, selectedTopic, selectedVideo
+        videoItemUiState.postValue(
+            VideoItemUiState(selectedCategory, selectedSubject, selectedTopic, selectedVideo)
         )
-
         return videoItemUiState
     }
 
@@ -97,23 +104,18 @@ class FakeMainViewModel @Inject constructor() : ViewModel(), MainViewModel {
         val practiceQuestionUiState: MutableLiveData<PracticeQuestionUiState> by lazy {
             MutableLiveData<PracticeQuestionUiState>()
         }
-        val testPracticeQuestions: MutableList<PracticeQuestion> = mutableListOf()
-        testPracticeQuestions.add(
-            PracticeQuestion(1, 1, 1, "Question 1",
-            "Option A", "Option B", "Option C", "Option D",
-            Option.D, Date())
-        )
-        testPracticeQuestions.add(
-             PracticeQuestion(2, 2, 2, "Question 2",
-            "Option A", "Option B", "Option C", "Option D",
-            Option.D,  Date())
-        )
-
         practiceQuestionUiState.value = PracticeQuestionUiState(
-            false, testPracticeQuestions, selectedCategory,
+            false, mutableListOf(), selectedCategory,
             selectedSubject, selectedTopic, selectedVideo
         )
+        viewModelScope.launch(Dispatchers.IO) {
+            val practiceQuestions: MutableList<PracticeQuestion>
+                = practiceQuestionRepository.getPracticeQuestions(selectedSubject.name, selectedVideo.videoID)
+            practiceQuestionUiState.postValue(PracticeQuestionUiState(
+                false, practiceQuestions, selectedCategory, selectedSubject, selectedTopic, selectedVideo
+            ))
 
+        }
         return practiceQuestionUiState
     }
 
