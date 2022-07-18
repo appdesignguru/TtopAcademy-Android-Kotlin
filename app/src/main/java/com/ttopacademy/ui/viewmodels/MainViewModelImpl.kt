@@ -140,6 +140,7 @@ class MainViewModelImpl @Inject constructor(
         selectedSubject = Subject(0, 1, "", Date())
         selectedTopic = Topic(0, 0, "", Date())
         selectedVideo = Video(
-            0,  0, "", "", "","", "", Date())
+            0,  0, "", "", "","", "", Date()
+        )
     }
 }

@@ -1,11 +1,11 @@
 package com.ttopacademy.di
 
-import com.ttopacademy.managers.fakes.FakeSubjectManager
-import com.ttopacademy.managers.fakes.FakeTopicManager
-import com.ttopacademy.managers.fakes.FakeVideoManager
 import com.ttopacademy.managers.interfaces.SubjectManager
 import com.ttopacademy.managers.interfaces.TopicManager
 import com.ttopacademy.managers.interfaces.VideoManager
+import com.ttopacademy.managers.real.SubjectManagerImpl
+import com.ttopacademy.managers.real.TopicManagerImpl
+import com.ttopacademy.managers.real.VideoManagerImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,20 +21,20 @@ abstract class ManagerModule {
     @Binds
     @Singleton
     abstract fun bindSubjectManager(
-        subjectManagerImpl: FakeSubjectManager
+        subjectManagerImpl: SubjectManagerImpl
     ): SubjectManager
 
     /** Injects TopicManager implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindTopicManager(
-        topicManagerImpl: FakeTopicManager
+        topicManagerImpl: TopicManagerImpl
     ): TopicManager
 
     /** Injects VideoManager implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindVideoManager(
-        videoManagerImpl: FakeVideoManager
+        videoManagerImpl: VideoManagerImpl
     ): VideoManager
 }
