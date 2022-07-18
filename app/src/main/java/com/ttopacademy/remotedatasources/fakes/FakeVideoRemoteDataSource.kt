@@ -7,7 +7,7 @@ import javax.inject.Inject
 /** Fake Video remote data source implementation class. Used for unit testing only. */
 class FakeVideoRemoteDataSource @Inject constructor() : VideoRemoteDataSource {
 
-    override fun getVideos(categorySubjectTopicID: Int): Result<List<VideoResponse>> {
+    override fun getVideos(categorySubjectTopicID: Int): Result<MutableList<VideoResponse>> {
         val mockVideoResponses: MutableList<VideoResponse> = mutableListOf()
         mockVideoResponses.add(
             VideoResponse(

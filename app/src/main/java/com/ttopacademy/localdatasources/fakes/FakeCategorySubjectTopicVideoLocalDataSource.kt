@@ -16,7 +16,7 @@ class FakeCategorySubjectTopicVideoLocalDataSource @Inject constructor() :
 
     override fun getCategorySubjectTopicVideoID(categorySubjectTopicID: Int, videoID: Int): Int {
         for (categorySubjectTopicVideo in categorySubjectTopicVideos) {
-            if (categorySubjectTopicVideo.categorySubjectTopiID == categorySubjectTopicID
+            if (categorySubjectTopicVideo.categorySubjectTopicID == categorySubjectTopicID
                 && categorySubjectTopicVideo.videoID == videoID
             ) {
                 return categorySubjectTopicVideo.categorySubjectTopicVideoID
@@ -28,7 +28,7 @@ class FakeCategorySubjectTopicVideoLocalDataSource @Inject constructor() :
     override fun getCategorySubjectTopicVideos(categorySubjectTopicID: Int): MutableList<CategorySubjectTopicVideo> {
         val result: MutableList<CategorySubjectTopicVideo> = mutableListOf()
         for (categorySubjectTopicVideo in categorySubjectTopicVideos) {
-            if (categorySubjectTopicVideo.categorySubjectTopiID == categorySubjectTopicID) {
+            if (categorySubjectTopicVideo.categorySubjectTopicID == categorySubjectTopicID) {
                 result.add(categorySubjectTopicVideo)
             }
         }

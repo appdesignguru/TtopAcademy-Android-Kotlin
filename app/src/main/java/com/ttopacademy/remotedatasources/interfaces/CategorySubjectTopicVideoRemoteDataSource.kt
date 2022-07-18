@@ -8,5 +8,5 @@ interface CategorySubjectTopicVideoRemoteDataSource {
     /** Returns CategorySubjectTopicVideo responses for given parameter.  */
     fun getCategorySubjectTopicVideos(
         categorySubjectTopicID: Int
-    ): Result<List<CategorySubjectTopicVideoResponse>>
+    ): Result<MutableList<CategorySubjectTopicVideoResponse>>
 }

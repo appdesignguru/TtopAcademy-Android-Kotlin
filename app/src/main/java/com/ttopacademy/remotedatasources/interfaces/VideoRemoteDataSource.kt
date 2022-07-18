@@ -5,5 +5,5 @@ import com.ttopacademy.remotedatasources.entities.VideoResponse
 interface VideoRemoteDataSource {
 
     /** Returns video responses for given parameter.  */
-    fun getVideos(categorySubjectTopicID: Int): Result<List<VideoResponse>>
+    fun getVideos(categorySubjectTopicID: Int): Result<MutableList<VideoResponse>>
 }

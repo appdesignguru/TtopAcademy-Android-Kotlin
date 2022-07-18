@@ -2,6 +2,7 @@ package com.ttopacademy.di
 
 import com.ttopacademy.repositories.fakes.*
 import com.ttopacademy.repositories.interfaces.*
+import com.ttopacademy.repositories.real.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,7 +18,7 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindCategoryRepository(
-        categoryRepositoryImpl: FakeCategoryRepository
+        categoryRepositoryImpl: CategoryRepositoryImpl
     ): CategoryRepository
 
     /** Injects SubjectRepository implementation with given parameter.  */
@@ -31,41 +32,41 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindCategorySubjectRepository(
-        categorySubjectRepositoryImpl: FakeCategorySubjectRepository
+        categorySubjectRepositoryImpl: CategorySubjectRepositoryImpl
     ): CategorySubjectRepository
 
     /** Injects CategorySubjectTopicRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectTopicRepository(
-        categorySubjectTopicRepositoryImpl: FakeCategorySubjectTopicRepository
+        categorySubjectTopicRepositoryImpl: CategorySubjectTopicRepositoryImpl
     ): CategorySubjectTopicRepository
 
     /** Injects CategorySubjectTopicVideoRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectTopicVideoRepository(
-        categorySubjectTopicVideoRepositoryImpl: FakeCategorySubjectTopicVideoRepository
-    ): CategorySubjectTopicVideoRepository?
+        categorySubjectTopicVideoRepositoryImpl: CategorySubjectTopicVideoRepositoryImpl
+    ): CategorySubjectTopicVideoRepository
 
     /** Injects TopicRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindTopicRepository(
-        topicRepositoryImpl: FakeTopicRepository
+        topicRepositoryImpl: TopicRepositoryImpl
     ): TopicRepository
 
     /** Injects VideoRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindVideoRepository(
-        videoRepositoryImpl: FakeVideoRepostory
-    ): VideoRepository?
+        videoRepositoryImpl: VideoRepositoryImpl
+    ): VideoRepository
 
     /** Injects PracticeQuestionRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindPracticeQuestionRepository(
-        practiceQuestionRepositoryImpl: FakePracticeQuestionRepository
+        practiceQuestionRepositoryImpl: PracticeQuestionRepositoryImpl
     ): PracticeQuestionRepository
 }

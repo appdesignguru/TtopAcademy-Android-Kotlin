@@ -6,6 +6,6 @@ import com.ttopacademy.remotedatasources.entities.CategorySubjectTopicResponse
 interface CategorySubjectTopicRemoteDataSource {
 
     /** Returns CategorySubjectTopic responses.  */
-    fun getAllCategorySubjectTopics(): Result<List<CategorySubjectTopicResponse>>
+    fun getAllCategorySubjectTopics(): Result<MutableList<CategorySubjectTopicResponse>>
 
 }

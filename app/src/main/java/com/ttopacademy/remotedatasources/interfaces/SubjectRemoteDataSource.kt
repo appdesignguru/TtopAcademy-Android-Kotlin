@@ -6,5 +6,5 @@ import com.ttopacademy.remotedatasources.entities.SubjectResponse
 interface SubjectRemoteDataSource {
 
     /** Returns subject responses.  */
-    fun getAllSubjects(): Result<List<SubjectResponse>>
+    fun getAllSubjects(): Result<MutableList<SubjectResponse>>
 }

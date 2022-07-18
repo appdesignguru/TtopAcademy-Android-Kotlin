@@ -10,7 +10,7 @@ data class CategorySubjectTopicVideo(
     @PrimaryKey val categorySubjectTopicVideoID: Int,
 
     /** Returns categorySubjectTopicID. */
-    val categorySubjectTopiID: Int,
+    val categorySubjectTopicID: Int,
 
     /** Returns videoID. */
     val videoID: Int,

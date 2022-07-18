@@ -8,7 +8,7 @@ import javax.inject.Inject
 class FakeCategorySubjectTopicRemoteDataSource @Inject constructor()
     : CategorySubjectTopicRemoteDataSource {
 
-    override fun getAllCategorySubjectTopics(): Result<List<CategorySubjectTopicResponse>> {
+    override fun getAllCategorySubjectTopics(): Result<MutableList<CategorySubjectTopicResponse>> {
         val mockCategorySubjectTopicResponses: MutableList<CategorySubjectTopicResponse> =
             mutableListOf()
         mockCategorySubjectTopicResponses.add(CategorySubjectTopicResponse(1, 1, 1))
