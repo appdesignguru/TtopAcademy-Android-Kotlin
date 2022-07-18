@@ -3,6 +3,7 @@ package com.ttopacademy.localdatasources.entities
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** Category entity class. */
 data class Category(
 
     /** Returns categoryID. */

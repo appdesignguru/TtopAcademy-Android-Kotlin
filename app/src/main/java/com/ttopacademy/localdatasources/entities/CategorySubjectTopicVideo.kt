@@ -3,7 +3,9 @@ package com.ttopacademy.localdatasources.entities
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** CategorySubjectTopicVideo entity class. */
 data class CategorySubjectTopicVideo(
+
     /** Returns categorySubjectTopicVideoID. */
     @PrimaryKey val categorySubjectTopicVideoID: Int,
 

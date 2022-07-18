@@ -3,6 +3,7 @@ package com.ttopacademy.localdatasources.entities
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** Topic entity class. */
 data class Topic(
 
     /** Returns topicID. */

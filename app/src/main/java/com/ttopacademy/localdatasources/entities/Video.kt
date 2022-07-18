@@ -3,6 +3,7 @@ package com.ttopacademy.localdatasources.entities
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** Video entity class. */
 data class Video(
 
     /** Returns videoID. */

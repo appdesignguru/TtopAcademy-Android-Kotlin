@@ -3,6 +3,7 @@ package com.ttopacademy.localdatasources.entities
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** Subject entity class. */
 data class Subject(
 
     /** Returns subjectID. */
