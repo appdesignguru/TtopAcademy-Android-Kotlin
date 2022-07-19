@@ -1,8 +1,11 @@
 package com.ttopacademy.localdatasources.entities.practicequestions
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** ChemistryPracticeQuestion entity class. */
+@Entity
 class ChemistryPracticeQuestion(
     @PrimaryKey override val practiceQuestionID: Int,
     override val videoID: Int,
@@ -13,7 +16,7 @@ class ChemistryPracticeQuestion(
     override val optionC: String,
     override val optionD: String,
     override val correctOption: Option,
-    override val dateSavedToLocalDatabase: Date
+    override var dateSavedToLocalDatabase: Date
 ) : PracticeQuestion(
     practiceQuestionID,
     videoID,

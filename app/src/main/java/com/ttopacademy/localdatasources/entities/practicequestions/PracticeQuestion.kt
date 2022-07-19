@@ -3,6 +3,7 @@ package com.ttopacademy.localdatasources.entities.practicequestions
 import androidx.room.PrimaryKey
 import java.util.*
 
+/** PracticeQuestion entity class. */
 open class PracticeQuestion(
 
     /** Returns practiceQuestionID. */
@@ -33,5 +34,5 @@ open class PracticeQuestion(
     open val correctOption: Option,
 
     /** Returns dateSavedToLocalDatabase. */
-    open val dateSavedToLocalDatabase: Date
+    open var dateSavedToLocalDatabase: Date
 )

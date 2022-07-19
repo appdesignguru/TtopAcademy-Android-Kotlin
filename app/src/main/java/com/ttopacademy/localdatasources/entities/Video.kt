@@ -1,9 +1,11 @@
 package com.ttopacademy.localdatasources.entities
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
 /** Video entity class. */
+@Entity
 data class Video(
 
     /** Returns videoID. */

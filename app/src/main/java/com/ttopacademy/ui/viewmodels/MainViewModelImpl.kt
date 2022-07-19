@@ -32,13 +32,16 @@ class MainViewModelImpl @Inject constructor(
 
     private var selectedCategory: Category
     private var selectedSubject: Subject
-    private var selectedTopic: Topic
+    private  var selectedTopic: Topic
     private var selectedVideo: Video
+    private val categoryUiState: MutableLiveData<CategoryUiState> = MutableLiveData()
+    private val subjectUiState: MutableLiveData<SubjectUiState> = MutableLiveData()
+    private val topicUiState: MutableLiveData<TopicUiState> = MutableLiveData()
+    private val videoUiState: MutableLiveData<VideoUiState> = MutableLiveData()
+    private val videoItemUiState: MutableLiveData<VideoItemUiState> = MutableLiveData()
+    private val practiceQuestionUiState: MutableLiveData<PracticeQuestionUiState> = MutableLiveData()
 
     override fun getCategoryUiState(): MutableLiveData<CategoryUiState> {
-        val categoryUiState: MutableLiveData<CategoryUiState> by lazy {
-            MutableLiveData<CategoryUiState>()
-        }
         categoryUiState.value = CategoryUiState(true, mutableListOf())
         viewModelScope.launch(Dispatchers.IO) {
             val categories: MutableList<Category> = categoryRepository.getAllCategories()
@@ -48,9 +51,6 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun getSubjectUiState(): MutableLiveData<SubjectUiState> {
-        val subjectUiState: MutableLiveData<SubjectUiState> by lazy {
-            MutableLiveData<SubjectUiState>()
-        }
         subjectUiState.value = SubjectUiState(true, mutableListOf(), selectedCategory)
         viewModelScope.launch(Dispatchers.IO) {
             val subjects: MutableList<Subject> = subjectManager.getSubjects(selectedCategory.categoryID)
@@ -60,9 +60,6 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun getTopicUiState(): MutableLiveData<TopicUiState> {
-        val topicUiState: MutableLiveData<TopicUiState> by lazy {
-            MutableLiveData<TopicUiState>()
-        }
         topicUiState.value = TopicUiState(false, mutableListOf(), selectedCategory, selectedSubject)
         viewModelScope.launch(Dispatchers.IO) {
             val topics: MutableList<Topic>
@@ -73,9 +70,6 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun getVideoUiState(): MutableLiveData<VideoUiState> {
-        val videoUiState: MutableLiveData<VideoUiState> by lazy {
-            MutableLiveData<VideoUiState>()
-        }
         videoUiState.value = VideoUiState(
             false, mutableListOf(), selectedCategory, selectedSubject, selectedTopic
         )
@@ -91,9 +85,6 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun getVideoItemUiState(): MutableLiveData<VideoItemUiState> {
-        val videoItemUiState: MutableLiveData<VideoItemUiState> by lazy {
-            MutableLiveData<VideoItemUiState>()
-        }
         videoItemUiState.postValue(
             VideoItemUiState(selectedCategory, selectedSubject, selectedTopic, selectedVideo)
         )
@@ -101,9 +92,6 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun getPracticeQuestionUiState(): MutableLiveData<PracticeQuestionUiState> {
-        val practiceQuestionUiState: MutableLiveData<PracticeQuestionUiState> by lazy {
-            MutableLiveData<PracticeQuestionUiState>()
-        }
         practiceQuestionUiState.value = PracticeQuestionUiState(
             false, mutableListOf(), selectedCategory,
             selectedSubject, selectedTopic, selectedVideo

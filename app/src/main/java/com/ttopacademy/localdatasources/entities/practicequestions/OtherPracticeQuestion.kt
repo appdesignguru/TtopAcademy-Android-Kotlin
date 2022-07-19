@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-/** MathPracticeQuestion entity class. */
+/** OtherPracticeQuestion entity class. */
 @Entity
-class MathPracticeQuestion (
+data class OtherPracticeQuestion(
     @PrimaryKey override val practiceQuestionID: Int,
     override val videoID: Int,
     override val questionNumber: Int,

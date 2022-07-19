@@ -45,7 +45,7 @@ class CategorySubjectRepositoryImpl @Inject constructor(
         val dateSavedToLocalDatabase = Date()
         for ((categorySubjectID, categoryID, subjectID) in categorySubjectResponses) {
             categorySubjects.add(
-                CategorySubject(categorySubjectID,categoryID, subjectID,dateSavedToLocalDatabase
+                CategorySubject(categorySubjectID, categoryID, subjectID, dateSavedToLocalDatabase
                 )
             )
         }

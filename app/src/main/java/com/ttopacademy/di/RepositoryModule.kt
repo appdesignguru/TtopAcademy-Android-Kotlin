@@ -25,28 +25,28 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindSubjectRepository(
-        subjectRepositoryImpl: FakeSubjectRepository
+        subjectRepositoryImpl: SubjectRepositoryImpl
     ): SubjectRepository
 
     /** Injects CategorySubjectRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectRepository(
-        categorySubjectRepositoryImpl: CategorySubjectRepositoryImpl
+        categorySubjectRepositoryImpl: FakeCategorySubjectRepository
     ): CategorySubjectRepository
 
     /** Injects CategorySubjectTopicRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectTopicRepository(
-        categorySubjectTopicRepositoryImpl: CategorySubjectTopicRepositoryImpl
+        categorySubjectTopicRepositoryImpl: FakeCategorySubjectTopicRepository
     ): CategorySubjectTopicRepository
 
     /** Injects CategorySubjectTopicVideoRepository implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectTopicVideoRepository(
-        categorySubjectTopicVideoRepositoryImpl: CategorySubjectTopicVideoRepositoryImpl
+        categorySubjectTopicVideoRepositoryImpl: FakeCategorySubjectTopicVideoRepository
     ): CategorySubjectTopicVideoRepository
 
     /** Injects TopicRepository implementation with given parameter.  */
