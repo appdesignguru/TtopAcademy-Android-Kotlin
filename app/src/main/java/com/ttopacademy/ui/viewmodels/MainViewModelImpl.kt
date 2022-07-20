@@ -102,7 +102,6 @@ class MainViewModelImpl @Inject constructor(
             practiceQuestionUiState.postValue(PracticeQuestionUiState(
                 false, practiceQuestions, selectedCategory, selectedSubject, selectedTopic, selectedVideo
             ))
-
         }
         return practiceQuestionUiState
     }
