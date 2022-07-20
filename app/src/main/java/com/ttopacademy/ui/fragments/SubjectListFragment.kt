@@ -55,10 +55,10 @@ class SubjectListFragment : Fragment() {
 
     private fun onItemClick(subject: Subject){
         mainViewModel.setSelectedSubject(subject)
-        navigateToSubjectListFragment()
+        navigateToTopicListFragment()
     }
 
-    private fun navigateToSubjectListFragment(){
+    private fun navigateToTopicListFragment(){
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container_view, TopicListFragment::class.java, null)
             .setReorderingAllowed(true)

@@ -18,5 +18,5 @@ data class CategorySubjectTopicVideo(
     val videoID: Int,
 
     /** Returns dateSavedToLocalDatabase. */
-    var dateSavedToLocalDatabase: Date
+    var dateSavedToLocalDatabase: Date?
 )

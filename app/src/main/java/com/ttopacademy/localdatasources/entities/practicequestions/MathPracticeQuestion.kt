@@ -16,7 +16,7 @@ class MathPracticeQuestion (
     override val optionC: String,
     override val optionD: String,
     override val correctOption: Option,
-    override var dateSavedToLocalDatabase: Date
+    override var dateSavedToLocalDatabase: Date?
 ) : PracticeQuestion(
     practiceQuestionID,
     videoID,

@@ -18,5 +18,5 @@ data class CategorySubject(
     val subjectID: Int,
 
     /** Returns subjectID. */
-    var dateSavedToLocalDatabase: Date
+    var dateSavedToLocalDatabase: Date?
 )

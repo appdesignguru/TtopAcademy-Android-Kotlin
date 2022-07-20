@@ -2,6 +2,7 @@ package com.ttopacademy.di
 
 import com.ttopacademy.localdatasources.fakes.*
 import com.ttopacademy.localdatasources.interfaces.*
+import com.ttopacademy.localdatasources.roomdb.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,55 +18,55 @@ abstract class LocalDataSourceModule {
     @Binds
     @Singleton
     abstract fun bindCategoryLocalDataSource(
-        categoryLocalDataSourceImpl: FakeCategoryLocalDataSource
+        categoryLocalDataSourceImpl: CategoryLocalDataSourceImpl
     ): CategoryLocalDataSource
 
     /** Injects CategorySubjectLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectLocalDataSource(
-        categorySubjectLocalDataSourceImpl: FakeCategorySubjectLocalDataSource
+        categorySubjectLocalDataSourceImpl: CategorySubjectLocalDataSourceImpl
     ): CategorySubjectLocalDataSource
 
     /** Injects CategorySubjectTopicLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectTopicLocalDataSource(
-        categorySubjectTopicLocalDataSourceImpl: FakeCategorySubjectTopicLocalDataSource
+        categorySubjectTopicLocalDataSourceImpl: CategorySubjectTopicLocalDataSourceImpl
     ): CategorySubjectTopicLocalDataSource
 
     /** Injects CategorySubjectTopicVideoLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindCategorySubjectTopicVideoLocalDataSource(
-        categorySubjectTopicVideoLocalDataSourceImpl: FakeCategorySubjectTopicVideoLocalDataSource
+        categorySubjectTopicVideoLocalDataSourceImpl: CategorySubjectTopicVideoLocalDataSourceImpl
     ): CategorySubjectTopicVideoLocalDataSource
 
     /** Injects PracticeQuestionLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindPracticeQuestionLocalDataSource(
-        practiceQuestionLocalDataSourceImpl: FakePracticeQuestionLocalDataSource
+        practiceQuestionLocalDataSourceImpl: PracticeQuestionLocalDataSourceImpl
     ): PracticeQuestionLocalDataSource
 
     /** Injects SubjectLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindSubjectLocalDataSource(
-        subjectLocalDataLocalSourceImpl: FakeSubjectLocalDataSource
+        subjectLocalDataLocalSourceImpl: SubjectLocalDataSourceImpl
     ): SubjectLocalDataSource
 
     /** Injects TopicLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindTopicLocalDataSource(
-        topicLocalDataSourceImpl: FakeTopicLocalDataSource
+        topicLocalDataSourceImpl: TopicLocalDataSourceImpl
     ): TopicLocalDataSource?
 
     /** Injects VideoLocalDataSource implementation with given parameter.  */
     @Binds
     @Singleton
     abstract fun bindVideoLocalDataSource(
-        videoLocalDataSourceImpl: FakeVideoLocalDataSource
+        videoLocalDataSourceImpl: VideoLocalDataSourceImpl
     ): VideoLocalDataSource
 }

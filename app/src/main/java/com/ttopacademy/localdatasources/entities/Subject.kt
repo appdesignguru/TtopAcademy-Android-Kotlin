@@ -18,5 +18,5 @@ data class Subject(
     val name: String,
 
     /** Returns dateSavedToLocalDatabase*/
-    var dateSavedToLocalDatabase: Date
+    var dateSavedToLocalDatabase: Date?
 )

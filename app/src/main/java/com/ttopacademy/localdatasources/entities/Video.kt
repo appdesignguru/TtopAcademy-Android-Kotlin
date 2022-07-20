@@ -30,5 +30,5 @@ data class Video(
     val solutionVideoSize: String,
 
     /** Returns dateSavedToLocalDatabase. */
-    var dateSavedToLocalDatabase: Date
+    var dateSavedToLocalDatabase: Date?
 )

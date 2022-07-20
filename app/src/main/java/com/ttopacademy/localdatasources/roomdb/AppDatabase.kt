@@ -1,5 +1,6 @@
 package com.ttopacademy.localdatasources.roomdb
 
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -13,10 +14,11 @@ import com.ttopacademy.localdatasources.roomdb.dao.*
 /** Declares Room AppDatabase.  */
 @Database(
     entities = [Category::class, CategorySubject::class, CategorySubjectTopic::class,
-                CategorySubjectTopicVideo::class, Subject::class, Topic::class, Video::class,
-                ChemistryPracticeQuestion::class, MathPracticeQuestion::class,
-                PhysicsPracticeQuestion::class, OtherPracticeQuestion::class],
-    version = 1
+        CategorySubjectTopicVideo::class, Subject::class, Topic::class, Video::class,
+        ChemistryPracticeQuestion::class, MathPracticeQuestion::class, PhysicsPracticeQuestion::class,
+        OtherPracticeQuestion::class],
+    version = 3,
+    autoMigrations = [AutoMigration(from = 2, to = 3)]
 )
 @TypeConverters(
     DateTimeConverters::class

@@ -18,5 +18,5 @@ data class Category(
     val name: String,
 
     /** Returns dateSavedToLocalDatabase. */
-    var dateSavedToLocalDatabase: Date
+    var dateSavedToLocalDatabase: Date?
 )

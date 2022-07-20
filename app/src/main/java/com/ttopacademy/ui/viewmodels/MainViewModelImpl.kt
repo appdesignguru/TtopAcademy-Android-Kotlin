@@ -32,7 +32,7 @@ class MainViewModelImpl @Inject constructor(
 
     private var selectedCategory: Category
     private var selectedSubject: Subject
-    private  var selectedTopic: Topic
+    private var selectedTopic: Topic
     private var selectedVideo: Video
     private val categoryUiState: MutableLiveData<CategoryUiState> = MutableLiveData()
     private val subjectUiState: MutableLiveData<SubjectUiState> = MutableLiveData()
@@ -124,11 +124,10 @@ class MainViewModelImpl @Inject constructor(
     }
 
     init {
-        selectedCategory = Category(0, 0, "", Date())
-        selectedSubject = Subject(0, 1, "", Date())
-        selectedTopic = Topic(0, 0, "", Date())
+        selectedCategory = Category(1, 0, "", Date())
+        selectedSubject = Subject(1, 1, "", Date())
+        selectedTopic = Topic(1, 0, "", Date())
         selectedVideo = Video(
-            0,  0, "", "", "","", "", Date()
-        )
+            0,  1, "", "", "","", "", Date())
     }
 }

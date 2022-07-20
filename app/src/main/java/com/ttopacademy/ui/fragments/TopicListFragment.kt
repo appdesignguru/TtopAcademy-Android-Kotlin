@@ -56,10 +56,10 @@ class TopicListFragment : Fragment() {
 
     private fun onItemClick(topic: Topic){
         mainViewModel.setSelectedTopic(topic)
-        navigateToSubjectListFragment()
+        navigateToVideoListFragment()
     }
 
-    private fun navigateToSubjectListFragment(){
+    private fun navigateToVideoListFragment(){
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container_view, VideoListFragment::class.java, null)
             .setReorderingAllowed(true)

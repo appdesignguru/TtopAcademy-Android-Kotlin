@@ -34,5 +34,5 @@ open class PracticeQuestion(
     open val correctOption: Option,
 
     /** Returns dateSavedToLocalDatabase. */
-    open var dateSavedToLocalDatabase: Date
+    open var dateSavedToLocalDatabase: Date?
 )
