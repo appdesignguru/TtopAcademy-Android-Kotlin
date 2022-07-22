@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /** Main Activity for app. */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

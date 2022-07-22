@@ -107,6 +107,7 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun setSelectedCategory(category: Category) {
+        selectedCategory = Category(0, 0, "", Date())
         selectedCategory = category
     }
 

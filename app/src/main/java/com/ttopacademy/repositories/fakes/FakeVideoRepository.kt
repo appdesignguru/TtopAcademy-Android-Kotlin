@@ -6,7 +6,7 @@ import java.util.*
 import javax.inject.Inject
 
 /** Fake Video repository implementation class. Used for unit testing only. */
-class FakeVideoRepostory @Inject constructor() : VideoRepository {
+class FakeVideoRepository @Inject constructor() : VideoRepository {
 
     override fun getVideos(categorySubjectTopicID: Int, videoIDs: MutableList<Int>): MutableList<Video> {
         val mockVideos: MutableList<Video> = mutableListOf()

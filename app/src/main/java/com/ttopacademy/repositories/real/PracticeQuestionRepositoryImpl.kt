@@ -14,11 +14,11 @@ class PracticeQuestionRepositoryImpl @Inject constructor(
     private val practiceQuestionRemoteDataSource: PracticeQuestionRemoteDataSource
 ) : PracticeQuestionRepository {
 
-    override fun getPracticeQuestions(
-        subjectName: String,
-        videoID: Int
-    ): MutableList<PracticeQuestion> {
-        TODO("Not yet implemented")
+    override fun getPracticeQuestions(subjectName: String, videoID: Int): MutableList<PracticeQuestion> {
+        if (practiceQuestionLocalDataSource.hasOutdatedPracticeQuestions(subjectName, videoID)) {
+            refreshPracticeQuestions(subjectName, videoID)
+        }
+        return practiceQuestionLocalDataSource.getPracticeQuestions(subjectName, videoID)
     }
 
     private fun refreshPracticeQuestions(subjectName: String, videoID: Int) {
