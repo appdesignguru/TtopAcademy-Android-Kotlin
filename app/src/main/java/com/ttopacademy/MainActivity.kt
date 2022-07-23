@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val fragmentManager: FragmentManager = supportFragmentManager
-        var fragment: Fragment? = fragmentManager.findFragmentById(R.id.fragment_container_view);
+        var fragment: Fragment? = fragmentManager.findFragmentById(R.id.fragment_container_view)
         if (fragment == null){
             fragment =  CategoryListFragment()
             fragmentManager.beginTransaction().add(R.id.fragment_container_view, fragment).commit()
